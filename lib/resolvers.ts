@@ -10,12 +10,15 @@ const Query: Required<QueryResolvers> = {
     const date = new Date();
     date.setDate(date.getDate() - days);
     const createdAt = formatISO(date, { representation: 'date' });
-    const searchParams = queryString.stringify({
-      sort: 'stars',
-      order: 'desc',
-      q: `language:${language} created:>${createdAt}`,
-      per_page: '10',
-    });
+
+    const searchParams = unescape(
+      queryString.stringify({
+        sort: 'stars',
+        order: 'desc',
+        q: `created:>${createdAt} language:${language}`,
+        per_page: '10',
+      })
+    );
 
     const response = await fetch(
       `https://api.github.com/search/repositories?${searchParams}`

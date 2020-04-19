@@ -1,12 +1,13 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-// import '../styles/index.css';
+import '../styles/index.css';
 
 const theme = {};
 
 const GlobalStyle = createGlobalStyle`
   html, body {
+    background: black;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
     Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, Arial,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
