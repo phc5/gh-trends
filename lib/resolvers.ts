@@ -1,14 +1,20 @@
 import { QueryResolvers } from './type-defs.graphqls';
 import fetch from 'isomorphic-unfetch';
 import queryString from 'query-string';
+import formatISO from 'date-fns/formatISO';
 
 const Query: Required<QueryResolvers> = {
   async repos(_parent: any, _args: any, _context: any) {
+    const { language, days } = _args;
+
+    const date = new Date();
+    date.setDate(date.getDate() - days);
+    const createdAt = formatISO(date, { representation: 'date' });
     const searchParams = queryString.stringify({
       sort: 'stars',
       order: 'desc',
-      q: `language:javascript`,
-      per_page: '1',
+      q: `language:${language} created:>${createdAt}`,
+      per_page: '10',
     });
 
     const response = await fetch(

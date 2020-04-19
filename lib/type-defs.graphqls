@@ -1,5 +1,5 @@
 type Query {
-  repos: [Repo]
+  repos(language: String!, days: Int!): [Repo]
 }
 
 type Repo {
