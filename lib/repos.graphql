@@ -1,0 +1,10 @@
+query Repos {
+  repos {
+    id
+    name
+    fullName
+    url
+    description
+    stars
+  }
+}

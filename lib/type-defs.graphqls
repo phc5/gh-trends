@@ -1,9 +1,12 @@
-type User {
-    id: ID!
-    name: String!
-    status: String!
+type Query {
+  repos: [Repo]
 }
 
-type Query {
-    viewer: User!
+type Repo {
+  id: ID
+  name: String
+  fullName: String
+  url: String
+  description: String
+  stars: Int
 }

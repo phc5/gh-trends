@@ -1,24 +1,16 @@
-import withApollo from '../lib/with-apollo'
-import Link from 'next/link'
-import { useViewerQuery } from '../lib/viewer.graphql'
+// import Link from 'next/link';
+import withApollo from '../lib/with-apollo';
+import { useReposQuery } from '../lib/repos.graphql';
 
 const Index = () => {
-  const { data } = useViewerQuery()
+  const { data } = useReposQuery();
 
   if (data) {
-    const { viewer } = data
-    return (
-      <div>
-        You're signed in as {viewer.name} and you're {viewer.status} goto{' '}
-        <Link href="/about">
-          <a>static</a>
-        </Link>{' '}
-        page.
-      </div>
-    )
+    const { repos } = data;
+    console.log(repos);
   }
 
-  return <div>...</div>
-}
+  return <div>...</div>;
+};
 
-export default withApollo(Index)
+export default withApollo(Index);
