@@ -19,7 +19,7 @@ const Query: Required<QueryResolvers> = {
         sort: 'stars',
         order: 'desc',
         q: `created:>${createdAt}${languageParam}`,
-        per_page: '10',
+        per_page: '12',
       })
     );
 

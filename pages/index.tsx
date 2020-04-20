@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Layout from '../components/Layout';
 import Cards from '../components/Cards';
 import withApollo from '../lib/with-apollo';
@@ -7,7 +6,7 @@ import { languagesMap, colors } from '../constants';
 
 const Index = () => {
   const [language, setLanguage] = useState('all');
-  const [days, setDays] = useState(7);
+  const [days, setDays] = useState(30);
   const [theme, setTheme] = useState('all');
 
   useEffect(() => {

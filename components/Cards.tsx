@@ -16,6 +16,7 @@ export default ({ language, days }: { language: string; days: number }) => {
         href={`https://github.com/${repo.fullName}`}
         target="_blank"
         rel="noopener noreferrer"
+        key={repo.fullName}
       >
         <StyledCardContent>
           <StyledHeader>{repo.name}</StyledHeader>
@@ -65,6 +66,7 @@ const StyledCard = styled.a`
 `;
 
 const StyledCardContent = styled.div`
+  margin-bottom: 1rem;
   overflow: hidden;
 `;
 

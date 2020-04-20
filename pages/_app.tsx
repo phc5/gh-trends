@@ -12,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
     Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, Arial,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   }
+
+  nav {
+    background-color: #F9A825;
+  }
 `;
 
 export default function MyApp({ Component, pageProps }: AppProps) {
