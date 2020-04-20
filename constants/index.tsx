@@ -1,4 +1,5 @@
-const languagesMap = {
+export const languagesMap: Record<string, string> = {
+  all: 'All',
   assembly: 'Assembly',
   c: 'C',
   cpp: 'C++',
@@ -15,14 +16,15 @@ const languagesMap = {
   typescript: 'TypeScript',
 };
 
-const daysMap = {
+export const daysMap: Record<string, number> = {
   'Past Day': 1,
   'Past Week': 7,
   'Past Month': 31,
   'Past Year': 365,
 };
 
-const colors = {
+export const colors: Record<string, string> = {
+  all: '#F9A825',
   assembly: '#b71c1c',
   c: '#4A148C',
   cpp: '#BF360C',
@@ -37,10 +39,4 @@ const colors = {
   rust: '#212121',
   swift: '#33691E',
   typescript: '#0D47A1',
-};
-
-module.exports = {
-  colors,
-  languagesMap,
-  daysMap,
 };

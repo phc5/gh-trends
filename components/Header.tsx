@@ -6,81 +6,70 @@ export default ({
   days,
   setLanguage,
   setDays,
+  theme,
 }: {
   language: string;
   days: number;
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
   setDays: React.Dispatch<React.SetStateAction<number>>;
+  theme: string;
 }) => (
-  <StyledNav>
-    <StyledGrid>
-      <StyledHeaderForm>
-        <StyledLabel>
-          <StyledLabelSpan>Language</StyledLabelSpan>
-          <StyledSelect
-            onChange={(event) => {
-              event.preventDefault();
-              setLanguage(event.target.value);
-            }}
-            defaultValue={language}
-          >
-            {Object.entries(languagesMap).map(([key, value]) => (
-              <option key={key} value={key}>
-                {value}
-              </option>
-            ))}
-          </StyledSelect>
-        </StyledLabel>
+  <StyledNav theme={theme}>
+    <StyledHeaderForm>
+      <StyledLabel>
+        <StyledLabelSpan>Language</StyledLabelSpan>
+        <StyledSelect
+          onChange={(event) => {
+            event.preventDefault();
+            setLanguage(event.target.value);
+          }}
+          defaultValue={language}
+        >
+          {Object.entries(languagesMap).map(([key, value]) => (
+            <option key={key} value={key}>
+              {value}
+            </option>
+          ))}
+        </StyledSelect>
+      </StyledLabel>
 
-        <StyledLabel>
-          <StyledLabelSpan>Time</StyledLabelSpan>
-          <StyledSelect
-            onChange={(event) => {
-              event.preventDefault();
-              setDays(parseInt(event.target.value));
-            }}
-            defaultValue={days}
-          >
-            {Object.entries(daysMap).map(([key, value]) => (
-              <option key={key} value={value}>
-                {key}
-              </option>
-            ))}
-          </StyledSelect>
-        </StyledLabel>
-      </StyledHeaderForm>
-    </StyledGrid>
+      <StyledLabel>
+        <StyledLabelSpan>Time</StyledLabelSpan>
+        <StyledSelect
+          onChange={(event) => {
+            event.preventDefault();
+            setDays(parseInt(event.target.value));
+          }}
+          defaultValue={days}
+        >
+          {Object.entries(daysMap).map(([key, value]) => (
+            <option key={key} value={value}>
+              {key}
+            </option>
+          ))}
+        </StyledSelect>
+      </StyledLabel>
+    </StyledHeaderForm>
   </StyledNav>
 );
 
 const StyledNav = styled.nav`
-  border-top: 1rem solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+  background-color: ${(props) => props.theme};
   color: white;
   margin-bottom: 4rem;
-`;
-
-const StyledGrid = styled.div`
-  display: grid;
-  grid-gap: 1.5rem;
-  grid-template-columns: 1fr 1fr;
-  margin: 0 auto;
-  padding: 0 2rem;
-  max-width: 150rem;
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    padding: 0;
-  }
+  padding: 0.5rem 0;
 `;
 
 const StyledHeaderForm = styled.form`
   display: grid;
-  grid-gap: 1.5rem;
-  grid-template-columns: 50% 50%;
-  @media (max-width: 480px) {
-    grid-template-columns: none;
-    grid-template-rows: 1fr 1fr;
+  grid-gap: 0.5rem;
+  grid-template-rows: 1fr 1fr;
+  padding: 0 2rem;
+
+  @media (min-width: 768px) {
+    grid-gap: 1.5rem;
+    grid-template-columns: 25% 25%;
+    grid-template-rows: none;
   }
 `;
 

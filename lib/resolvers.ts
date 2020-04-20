@@ -7,6 +7,9 @@ const Query: Required<QueryResolvers> = {
   async repos(_parent: any, _args: any, _context: any) {
     const { language, days } = _args;
 
+    const languageParam =
+      language.toLowerCase() === 'all' ? '' : ` language:${language}`;
+
     const date = new Date();
     date.setDate(date.getDate() - days);
     const createdAt = formatISO(date, { representation: 'date' });
@@ -15,7 +18,7 @@ const Query: Required<QueryResolvers> = {
       queryString.stringify({
         sort: 'stars',
         order: 'desc',
-        q: `created:>${createdAt} language:${language}`,
+        q: `created:>${createdAt}${languageParam}`,
         per_page: '10',
       })
     );
@@ -38,16 +41,36 @@ const Query: Required<QueryResolvers> = {
         name: String;
         full_name: String;
         url: String;
-        description: String;
+        description: string;
         stargazers_count: string;
-      }) => ({
-        id,
-        name,
-        fullName: full_name,
-        url,
-        description,
-        stars: stargazers_count,
-      })
+      }) => {
+        const trimmedDescription = description ? description.substr(0, 80) : '';
+
+        const snippet =
+          trimmedDescription.length > 0
+            ? description.length < 80
+              ? trimmedDescription
+              : trimmedDescription.substr(
+                  0,
+                  Math.max(
+                    trimmedDescription.lastIndexOf('.'),
+                    trimmedDescription.lastIndexOf(' '),
+                    trimmedDescription.lastIndexOf('?'),
+                    trimmedDescription.lastIndexOf('!'),
+                    trimmedDescription.lastIndexOf(',')
+                  )
+                ) + '...'
+            : '';
+
+        return {
+          id,
+          name,
+          fullName: full_name,
+          url,
+          description: snippet,
+          stars: stargazers_count,
+        };
+      }
     );
 
     return trendingRepos;

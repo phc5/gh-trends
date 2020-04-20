@@ -44,8 +44,8 @@ export default ({ language, days }: { language: string; days: number }) => {
 };
 const StyledCardsContainer = styled.div`
   display: grid;
-  grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(calc(30rem - 1.6rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(calc(25rem - 1.6rem), 1fr));
+  grid-gap: 1.6rem;
   padding: 0 2rem;
 `;
 
@@ -65,11 +65,11 @@ const StyledCard = styled.a`
 `;
 
 const StyledCardContent = styled.div`
-  margin-bottom: 4rem;
+  overflow: hidden;
 `;
 
 const StyledHeader = styled.h2`
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
   margin: 0;
   max-width: 100%;
@@ -81,7 +81,7 @@ const StyledHeader = styled.h2`
 
 const StyledSubHeader = styled.p`
   color: #bdbdbd;
-  font-size: 1.25rem;
+  font-size: 1rem;
   margin: 0;
   max-width: 100%;
   overflow: hidden;
@@ -91,7 +91,7 @@ const StyledSubHeader = styled.p`
 `;
 
 const StyleDescription = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.75rem;
   max-width: 100%;
 `;

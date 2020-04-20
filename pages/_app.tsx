@@ -7,7 +7,7 @@ const theme = {};
 
 const GlobalStyle = createGlobalStyle`
   html, body {
-    background: black;
+    background: #D4D4FF08;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
     Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, Arial,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
